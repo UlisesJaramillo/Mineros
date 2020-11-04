@@ -1,0 +1,375 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/Mundo.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Mapa.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Bolsa.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Control.gd" type="Script" id=5]
+[ext_resource path="res://Fuentes/new_dynamicfont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Texturas/barra.png" type="Texture" id=7]
+[ext_resource path="res://Texturas/fichaI.png" type="Texture" id=8]
+[ext_resource path="res://Texturas/cambiar.png" type="Texture" id=9]
+[ext_resource path="res://Sonidos/tirarDado3.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sonidos/agarrarFicha.wav" type="AudioStream" id=11]
+[ext_resource path="res://Sonidos/cancelar3.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sonidos/cambiaFicha.wav" type="AudioStream" id=13]
+
+[node name="Mundo" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Mapa" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Bolsa" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512.496, 304.642 )
+current = true
+limit_left = -10000
+limit_top = -10000
+limit_right = 10000
+limit_bottom = 10000
+limit_smoothed = true
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+script = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="Camera2D"]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 240.0
+margin_bottom = 188.0
+mouse_filter = 1
+script = ExtResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/CanvasLayer"]
+margin_right = 1024.0
+margin_bottom = 40.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer/VBoxContainer3"]
+margin_top = 6.0
+margin_right = 1024.0
+margin_bottom = 33.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/CanvasLayer/VBoxContainer3/HBoxContainer"]
+margin_left = 512.0
+margin_right = 512.0
+margin_bottom = 27.0
+custom_fonts/font = ExtResource( 6 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer"]
+anchor_top = 0.82
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/CanvasLayer/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 108.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 1
+
+[node name="Menu" type="Control" parent="Control/CanvasLayer"]
+anchor_left = 0.295
+anchor_top = 0.188
+anchor_right = 0.733
+anchor_bottom = 0.724
+margin_left = 30.92
+margin_top = 11.2
+margin_right = -316.592
+margin_bottom = -246.4
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/CanvasLayer/Menu"]
+anchor_top = 0.161
+anchor_bottom = 0.161
+margin_left = -3.1189
+margin_top = -2.29022
+margin_right = 359.881
+margin_bottom = 308.71
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer/Menu/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 356.0
+margin_bottom = 304.0
+mouse_filter = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/CanvasLayer/Menu/PanelContainer/VBoxContainer"]
+margin_right = 348.0
+margin_bottom = 14.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/CanvasLayer/Menu/PanelContainer/VBoxContainer/HBoxContainer4"]
+margin_left = 154.0
+margin_right = 193.0
+margin_bottom = 14.0
+text = "MENU"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer/Menu/PanelContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 348.0
+margin_bottom = 42.0
+
+[node name="Label" type="Label" parent="Control/CanvasLayer/Menu/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 182.0
+margin_bottom = 19.0
+text = "Direccion IP :                        "
+
+[node name="ip" type="LineEdit" parent="Control/CanvasLayer/Menu/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 186.0
+margin_right = 244.0
+margin_bottom = 24.0
+text = "127.0.0.1"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/CanvasLayer/Menu/PanelContainer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 348.0
+margin_bottom = 70.0
+
+[node name="Label2" type="Label" parent="Control/CanvasLayer/Menu/PanelContainer/VBoxContainer/HBoxContainer2"]
+margin_top = 5.0
+margin_right = 182.0
+margin_bottom = 19.0
+text = "Puerto :                                 "
+
+[node name="puerto" type="LineEdit" parent="Control/CanvasLayer/Menu/PanelContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 186.0
+margin_right = 244.0
+margin_bottom = 24.0
+text = "31400"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/CanvasLayer/Menu/PanelContainer/VBoxContainer"]
+margin_top = 74.0
+margin_right = 348.0
+margin_bottom = 98.0
+
+[node name="Label3" type="Label" parent="Control/CanvasLayer/Menu/PanelContainer/VBoxContainer/HBoxContainer3"]
+margin_top = 5.0
+margin_right = 182.0
+margin_bottom = 19.0
+text = "Nombre Jugador:                   "
+
+[node name="nombreJugador" type="LineEdit" parent="Control/CanvasLayer/Menu/PanelContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 186.0
+margin_right = 244.0
+margin_bottom = 24.0
+
+[node name="Crear" type="Button" parent="Control/CanvasLayer/Menu"]
+margin_left = 80.0
+margin_top = 270.0
+margin_right = 154.0
+margin_bottom = 301.0
+text = "Crear"
+
+[node name="Unirse" type="Button" parent="Control/CanvasLayer/Menu"]
+margin_left = 200.0
+margin_top = 270.0
+margin_right = 274.0
+margin_bottom = 301.0
+text = "Unirse"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Control/CanvasLayer"]
+anchor_left = 0.003
+anchor_top = 0.768
+anchor_right = 1.0
+anchor_bottom = 0.886
+margin_left = 2.928
+margin_top = -3.80002
+margin_right = -6.0
+margin_bottom = 38.4
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer/VBoxContainer4"]
+margin_top = 46.0
+margin_right = 1012.0
+margin_bottom = 66.0
+alignment = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/CanvasLayer/VBoxContainer4/HBoxContainer"]
+margin_right = 931.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_fonts/normal_font = ExtResource( 6 )
+text = "Puntos disponibles"
+scroll_active = false
+
+[node name="TerminarTurno" type="Button" parent="Control/CanvasLayer/VBoxContainer4/HBoxContainer"]
+visible = false
+margin_left = 831.0
+margin_right = 940.0
+margin_bottom = 20.0
+mouse_filter = 1
+text = "Terminar Turno"
+
+[node name="TirarDado" type="Button" parent="Control/CanvasLayer/VBoxContainer4/HBoxContainer"]
+margin_left = 935.0
+margin_right = 1012.0
+margin_bottom = 20.0
+mouse_filter = 1
+text = "Tirar Dado"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/CanvasLayer"]
+anchor_top = 0.837
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = -9.20001
+margin_right = -3.0
+margin_bottom = -1.0
+mouse_filter = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer/VBoxContainer2"]
+margin_top = 53.0
+margin_right = 1016.0
+margin_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/CanvasLayer/VBoxContainer2/HBoxContainer"]
+visible = false
+margin_left = 476.0
+margin_right = 540.0
+margin_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture_normal = ExtResource( 8 )
+
+[node name="TextureButton2" type="TextureButton" parent="Control/CanvasLayer/VBoxContainer2/HBoxContainer"]
+visible = false
+margin_left = 510.0
+margin_right = 574.0
+margin_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture_normal = ExtResource( 8 )
+
+[node name="TextureButton3" type="TextureButton" parent="Control/CanvasLayer/VBoxContainer2/HBoxContainer"]
+visible = false
+margin_left = 374.0
+margin_right = 438.0
+margin_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture_normal = ExtResource( 8 )
+
+[node name="TextureButton4" type="TextureButton" parent="Control/CanvasLayer/VBoxContainer2/HBoxContainer"]
+visible = false
+margin_left = 408.0
+margin_right = 472.0
+margin_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture_normal = ExtResource( 8 )
+
+[node name="TextureButton5" type="TextureButton" parent="Control/CanvasLayer/VBoxContainer2/HBoxContainer"]
+visible = false
+margin_left = 442.0
+margin_right = 506.0
+margin_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture_normal = ExtResource( 8 )
+
+[node name="TextureButton6" type="TextureButton" parent="Control/CanvasLayer/VBoxContainer2/HBoxContainer"]
+visible = false
+margin_left = 476.0
+margin_right = 540.0
+margin_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture_normal = ExtResource( 8 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CanvasLayer"]
+margin_left = 11.61
+margin_top = 47.6825
+margin_right = 235.61
+margin_bottom = 462.682
+mouse_filter = 2
+
+[node name="TablaPuntaje" type="RichTextLabel" parent="Control/CanvasLayer/MarginContainer"]
+margin_right = 224.0
+margin_bottom = 414.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 6 )
+
+[node name="AcceptDialog" type="AcceptDialog" parent="Control/CanvasLayer"]
+margin_left = 463.886
+margin_top = 230.138
+margin_right = 572.886
+margin_bottom = 288.138
+window_title = "Ganador!!"
+
+[node name="CenterContainer" type="MarginContainer" parent="Control/CanvasLayer"]
+anchor_left = 1.0
+anchor_top = 0.806
+anchor_right = 1.0
+anchor_bottom = 0.806
+margin_left = -116.891
+margin_top = -113.197
+margin_right = -1.89075
+margin_bottom = -0.196533
+
+[node name="Dado" type="Sprite" parent="Control/CanvasLayer/CenterContainer"]
+position = Vector2( 60.189, 57.3529 )
+scale = Vector2( 0.55954, 0.560948 )
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/CanvasLayer"]
+anchor_left = 0.173
+anchor_top = 0.875
+anchor_right = 0.235
+anchor_bottom = 0.983
+margin_left = -0.152008
+margin_top = -6.10352e-05
+margin_right = 0.359985
+margin_bottom = 0.199951
+
+[node name="Cambiar" type="TextureButton" parent="Control/CanvasLayer/MarginContainer2"]
+margin_right = 64.0
+margin_bottom = 65.0
+texture_normal = ExtResource( 9 )
+
+[node name="tiraDado" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="agarrarFicha" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="cancelar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="cambiaFicha" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+[connection signal="pressed" from="Control/CanvasLayer/Menu/Crear" to="." method="_on_Crear_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/Menu/Unirse" to="." method="_on_Unirse_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/VBoxContainer4/HBoxContainer/TerminarTurno" to="." method="_on_TerminarTurno_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/VBoxContainer4/HBoxContainer/TirarDado" to="." method="_on_TirarDado_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/VBoxContainer2/HBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/VBoxContainer2/HBoxContainer/TextureButton2" to="." method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/VBoxContainer2/HBoxContainer/TextureButton3" to="." method="_on_TextureButton3_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/VBoxContainer2/HBoxContainer/TextureButton4" to="." method="_on_TextureButton4_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/VBoxContainer2/HBoxContainer/TextureButton5" to="." method="_on_TextureButton5_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/VBoxContainer2/HBoxContainer/TextureButton6" to="." method="_on_TextureButton6_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/MarginContainer2/Cambiar" to="." method="_on_Cambiar_pressed"]

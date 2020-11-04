@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Jugador.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Mano.gd" type="Script" id=2]
+[ext_resource path="res://Texturas/seleccion2.png" type="Texture" id=3]
+
+[node name="Jugador" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Mano" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Imagen" type="Sprite" parent="."]
+z_index = 1
+texture = ExtResource( 3 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
